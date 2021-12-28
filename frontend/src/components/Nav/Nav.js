@@ -37,7 +37,7 @@ class Nav extends Component {
       )
       .catch(console.log);
 
-    fetch(`${API_ENDPOINT}/category`)
+    fetch(`htto://ec2-3-35-133-167.ap-northeast-2.compute.amazonaws.com:8000/category`)
       .then(res => {
         return res.json();
       })
