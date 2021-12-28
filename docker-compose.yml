@@ -1,17 +1,17 @@
 version: '3'
 services:
   frontend:
-    image:
-      ports:
-        - 3000:3000
-      volumes:
-        - /usr/src/app/node_modules
-        - ./frontend:/usr/src/app
-      stdin_open: true
+    image: hwibaski/thisisnevercode-frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - /usr/src/app/node_modules
+      - ./frontend:/usr/src/app
+    stdin_open: true
+    mem_limit: 128m
 
   backend:
-    build:
-      context: ./backend
+    image: hwibaski/thisisnevercode-backend
     volumes:
       - /usr/src/app/node_modules
       - ./backend:/usr/src/app
@@ -24,3 +24,4 @@ services:
       - SALT=${SALT}
       - ACCES_TOKEN_SECRET_KEY=${ACCES_TOKEN_SECRET_KEY}
       - DATABASE_URL=${DATABASE_URL}
+    mem_limit: 128m
