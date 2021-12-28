@@ -22,7 +22,7 @@ deploy:
   bucket_name: elasticbeanstalk-ap-northeast-2-083749336129
   bucket_path: 'docker-thisisnevercode-app'
   on:
-    branch: master
+    branch: main
 
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
