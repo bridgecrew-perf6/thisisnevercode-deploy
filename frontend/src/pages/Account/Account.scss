@@ -1,0 +1,121 @@
+.Account {
+  margin: auto 0;
+  padding: 110px 40px 60px 40px;
+  .accountWrapper {
+    display: flex;
+    justify-content: center;
+    width: 1345px;
+    height: 574px;
+    .accountBox {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      height: 574px;
+      .accountEmailMenu {
+        flex: 0.7 1 0;
+        border-bottom: 2px solid silver;
+        .menuTitle {
+          font-size: 18px;
+          font-weight: 800;
+        }
+        .categoryDesc {
+          font-size: 16.5px;
+
+          padding: 32px 0 22px 0;
+        }
+      }
+      .accountMilesMenu {
+        flex: 1.3 1 0;
+        position: relative;
+        border-bottom: 2px solid silver;
+
+        .menuTitle {
+          font-size: 18px;
+          font-weight: 800;
+          padding-top: 20px;
+        }
+        .categoryDesc {
+          font-size: 16.5px;
+          padding: 22px 32px 22px 0;
+          line-height: 22px;
+        }
+        .accountBtn {
+          position: absolute;
+          border-bottom: 1px solid black;
+          top: 20px;
+          right: 0;
+          cursor: pointer;
+        }
+      }
+      .accountWishListMenu {
+        flex: 1 1 0;
+        position: relative;
+        border-bottom: 2px solid silver;
+        .menuTitle {
+          font-size: 18px;
+          font-weight: 800;
+          padding-top: 20px;
+        }
+        .categoryDesc {
+          font-size: 16.5px;
+          padding: 22px 0 22px 0;
+        }
+        .accountBtn {
+          position: absolute;
+          border-bottom: 1px solid black;
+          top: 20px;
+          right: 0;
+          cursor: pointer;
+        }
+      }
+      .accountAddressMenu {
+        flex: 1 1 0;
+        position: relative;
+        border-bottom: 2px solid silver;
+        .menuTitle {
+          font-size: 18px;
+          font-weight: 800;
+          padding-top: 20px;
+        }
+        .categoryDesc {
+          font-size: 16.5px;
+
+          padding: 22px 0 22px 0;
+        }
+        .accountBtn {
+          position: absolute;
+          border-bottom: 1px solid black;
+          top: 20px;
+          right: 0;
+          cursor: pointer;
+        }
+      }
+      .accountOrderMenu {
+        flex: 1 1 0;
+        .menuTitle {
+          font-size: 18px;
+          font-weight: 800;
+          padding-top: 20px;
+        }
+        .categoryDesc {
+          font-size: 16.5px;
+
+          padding: 22px 0 22px 0;
+        }
+      }
+      .logoutButton {
+        height: 40px;
+        color: white;
+        background-color: black;
+        border-radius: 45px;
+        border: none;
+        font-size: large;
+        cursor: pointer;
+        padding: 10px 0;
+        .logoutText {
+          // line-height: 22px;
+        }
+      }
+    }
+  }
+}

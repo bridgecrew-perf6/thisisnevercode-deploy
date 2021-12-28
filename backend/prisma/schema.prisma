@@ -1,0 +1,100 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                   Int       @id @default(autoincrement())
+  name                 String    @db.VarChar(100)
+  email                String    @unique @db.VarChar(100)
+  password             String    @db.VarChar(100)
+  address              String    @db.VarChar(100)
+  createdAt            DateTime? @default(now()) @map("created_at")
+  updatedAt            DateTime? @default(now()) @map("updated_at")
+  isDeleted            Boolean   @default(false) @map("is_deleted")
+  mandatoryPolicyAgree Boolean   @default(false) @map("mandatory_policy_agree")
+  deletedAt            DateTime? @map("deleted_at")
+  Order                Order[]
+
+  @@map("users")
+}
+
+model Product {
+  id                 Int          @id @default(autoincrement())
+  name               String       @db.VarChar(100)
+  price              Decimal      @db.Decimal(10, 2)
+  categoryId         Int          @map("category_id")
+  category           Category     @relation(fields: [categoryId], references: [id])
+  subCategoryId      Int?         @map("sub_category_id")
+  SubCategory        SubCategory? @relation(fields: [subCategoryId], references: [id])
+  description        String?      @db.VarChar(3000)
+  textileInformation String       @map("textile_information") @db.VarChar(3000)
+  isNew              Boolean      @default(false) @map("is_new")
+  isSoldout          Boolean      @default(false) @map("is_soldout")
+  isDiscount         Boolean      @default(false) @map("is_discount")
+  stockQuantity      Int          @map("stock_quantity")
+  createdAt          DateTime?    @default(now()) @map("created_at")
+  mainImageUrl       String       @map("main_image_url") @db.VarChar(3000)
+
+  Order       Order[]
+  DetailImage DetailImage[]
+  SubImage    SubImage[]
+
+  @@map("products")
+}
+
+model Category {
+  id           Int           @id @default(autoincrement())
+  categoryName String        @map("category_name") @db.VarChar(100)
+  Product      Product[]
+  SubCategory  SubCategory[]
+
+  @@map("categories")
+}
+
+model SubCategory {
+  id              Int      @id @default(autoincrement())
+  subCategoryName String   @map("sub_category_name") @db.VarChar(100)
+  categoryId      Int      @map("category_id")
+  category        Category @relation(fields: [categoryId], references: [id])
+
+  Product Product[]
+
+  @@map("sub_categories")
+}
+
+model DetailImage {
+  id             Int     @id @default(autoincrement())
+  keyNumber      String  @unique @map("key_number") @db.VarChar(100)
+  detailImageUrl String  @map("detail_image_url") @db.VarChar(3000)
+  productId      Int     @map("product_id")
+  product        Product @relation(fields: [productId], references: [id])
+
+  @@map("detail_images")
+}
+
+model SubImage {
+  id          Int     @id @default(autoincrement())
+  keyNumber   String  @unique @map("key_number") @db.VarChar(100)
+  subImageUrl String  @map("sub_image_url") @db.VarChar(3000)
+  productId   Int     @map("product_id")
+  product     Product @relation(fields: [productId], references: [id])
+
+  @@map("sub_images")
+}
+
+model Order {
+  id            Int       @id @default(autoincrement())
+  productId     Int       @map("product_id")
+  product       Product   @relation(fields: [productId], references: [id])
+  userId        Int       @map("user_id")
+  user          User      @relation(fields: [userId], references: [id])
+  orderQuantity Int       @map("order_quantity")
+  createdAt     DateTime? @default(now()) @map("created_at")
+
+  @@map("orders")
+}

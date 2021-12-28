@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+
+.sortOptionBox {
+  position: absolute;
+  top: 105px;
+  right: 40px;
+  width: 210px;
+  height: 180px;
+  padding: 20px 15px;
+  border: 1px solid $modalBorderColor;
+  background-color: $modalBgColor;
+
+  .sortOptionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .sortOptionHeaderTitle {
+      margin-right: 70px;
+    }
+
+    .sortOptionCloseBtn {
+      display: inline-block;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .sortList {
+    margin-right: 53px;
+  }
+}
+
+.sortModalInvisible {
+  display: none;
+}
+
+.sortOptionBoxScrollUp {
+  position: fixed;
+  top: 103px;
+  visibility: visible;
+}

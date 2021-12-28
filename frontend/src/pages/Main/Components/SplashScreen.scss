@@ -1,0 +1,75 @@
+@keyframes hideSplashScreen {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes blinkSplashScreen {
+  0% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  14% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveTitle {
+  from {
+    top: 45%;
+    width: 400px;
+  }
+  to {
+    top: 2%;
+    width: 180px;
+  }
+}
+
+.SplashScreen {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  font-size: 50px;
+  z-index: 99999;
+  animation: blinkSplashScreen 1.5s ease-out,
+    hideSplashScreen 1.5s ease-in-out forwards;
+  animation-delay: 1.5s, 4s;
+
+  .SplashScreenLogo {
+    position: absolute;
+    top: 45%;
+    width: 400px;
+    animation: moveTitle 1s ease-in-out forwards;
+    animation-delay: 3.5s;
+  }
+}

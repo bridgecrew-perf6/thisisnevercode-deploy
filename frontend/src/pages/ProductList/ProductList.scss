@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+@import '../../styles/mixin.scss';
+
+.ProductList {
+  position: relative;
+  overflow-x: hidden;
+  .ProductComponentWrapper {
+    @include gridTemplate(
+      grid,
+      repeat(5, minmax(18vw, auto)),
+      repeat(auto, minmax(350px, auto))
+    );
+    padding: 48px 40px 140px 40px;
+    @include preventDrag;
+  }
+}
+
+@media screen and (max-width: $mediaQueryWidth) {
+  .ProductList {
+    .ProductComponentWrapper {
+      @include gridTemplate(
+        grid,
+        repeat(2, minmax(48vw, 2fr)),
+        repeat(auto-fill, auto)
+      );
+    }
+  }
+}

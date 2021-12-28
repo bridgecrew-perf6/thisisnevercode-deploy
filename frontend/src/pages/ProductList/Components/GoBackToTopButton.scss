@@ -1,0 +1,19 @@
+.goBackToTopButton {
+  display: block;
+  text-align: center;
+  margin-bottom: 100px;
+  .button {
+    display: inline;
+    font-size: 26px;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  .button::selection {
+    background-color: #0e0;
+  }
+
+  :hover {
+    cursor: pointer;
+  }
+}

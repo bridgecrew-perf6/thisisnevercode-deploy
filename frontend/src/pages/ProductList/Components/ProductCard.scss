@@ -1,0 +1,161 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin.scss';
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+
+  .productWrapper {
+    position: relative;
+
+    .hoverEventArea0 {
+      @include eventAreaPosition(absolute, 15px, 60px, 200px, 1);
+    }
+
+    .hoverEventArea1 {
+      @include eventAreaPosition(absolute, 75px, 60px, 200px, 1);
+    }
+
+    .hoverEventArea2 {
+      @include eventAreaPosition(absolute, 135px, 60px, 200px, 1);
+    }
+
+    .hoverEventArea3 {
+      @include eventAreaPosition(absolute, 19px, 60px, 200px, 1);
+    }
+
+    .imageWrapper {
+      .mainImage {
+        @include productDetailCardTemplate(
+          contain,
+          no-repeat,
+          bottom,
+          18vw,
+          28vh
+        );
+      }
+      .ProductDetailCard {
+        @include productDetailCardTemplate(
+          contain,
+          no-repeat,
+          bottom,
+          18vw,
+          28vh
+        );
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .subImgWrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .productName {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .productPrice {
+    @extend .productName;
+  }
+}
+
+@media screen and (max-width: $mediaQueryWidth) {
+  .ProductCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+
+    .productWrapper {
+      position: relative;
+
+      .hoverEventArea0 {
+        @include meDiaQueryEventAreaPosition(
+          absolute,
+          10px,
+          60px,
+          100px,
+          350px,
+          1
+        );
+      }
+
+      .hoverEventArea1 {
+        @include meDiaQueryEventAreaPosition(
+          absolute,
+          10px,
+          160px,
+          100px,
+          350px,
+          1
+        );
+      }
+
+      .hoverEventArea2 {
+        @include meDiaQueryEventAreaPosition(
+          absolute,
+          10px,
+          260px,
+          100px,
+          350px,
+          1
+        );
+      }
+
+      .hoverEventArea3 {
+        @include meDiaQueryEventAreaPosition(
+          absolute,
+          10px,
+          360px,
+          100px,
+          350px,
+          1
+        );
+      }
+      .imageWrapper {
+        .mainImage {
+          width: 48vw;
+          height: 55vh;
+        }
+
+        .ProductDetailCard {
+          @include productDetailCardTemplate(
+            contain,
+            no-repeat,
+            bottom,
+            48vw,
+            55vh
+          );
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+        }
+      }
+    }
+
+    .subImgWrapper {
+      display: flex;
+      justify-content: center;
+    }
+    .productPrice,
+    .productName {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 38px;
+    }
+  }
+}

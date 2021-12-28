@@ -1,0 +1,105 @@
+@import '../../styles/variables';
+
+.Nav {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  background-color: $navBgColor;
+
+  .navWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+
+    .productsNavMenu {
+      display: flex;
+      align-items: center;
+      width: 33%;
+      margin-left: 40px;
+
+      .navMenuItem {
+        margin-right: 20px;
+        padding: 16px 0;
+
+        .navMenuLink {
+          display: block;
+
+          &:hover {
+            color: $pointColor;
+            transition: color 0.4s;
+          }
+        }
+      }
+    }
+
+    .mainLogoContainer {
+      display: flex;
+      justify-content: center;
+      width: 33%;
+
+      .mainLogo {
+        width: 180px;
+        height: 47px;
+        margin-right: 20px;
+      }
+    }
+
+    .userNavMenu {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      width: 33%;
+      min-width: 243px;
+      margin-right: 20px;
+
+      .navMenuItem {
+        margin-right: 20px;
+
+        .cartItem {
+          margin-right: 4px;
+        }
+
+        .cartCountNum {
+          position: absolute;
+          top: 3px;
+          right: 26px;
+          color: white;
+        }
+
+        .navMenuLink {
+          display: inline-block;
+
+          &:hover {
+            color: $pointColor;
+            transition: color 0.4s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navActive {
+  visibility: visible;
+  transition: all 0.5s;
+}
+
+.navHidden {
+  visibility: hidden;
+  transition: all 0.3s;
+  transform: translateY(-100px);
+}
+
+@media screen and (max-width: 1140px) {
+  .Nav {
+    .navWrapper {
+      display: none;
+    }
+
+    .navForResponsive {
+      display: flex;
+    }
+  }
+}

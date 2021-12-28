@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - /usr/src/app/node_modules
+      - ./frontend:/usr/src/app
+    stdin_open: true
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - /usr/src/app/node_modules
+      - ./backend:/usr/src/app
+    ports:
+      - 8000:8000
+    environment:
+      - PORT=${PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_TTL=${JWT_TTL}
+      - SALT=${SALT}
+      - ACCES_TOKEN_SECRET_KEY=${ACCES_TOKEN_SECRET_KEY}
+      - DATABASE_URL=${DATABASE_URL}
