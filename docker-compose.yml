@@ -2,21 +2,27 @@ version: '3'
 services:
   frontend:
     image: hwibaski/thisisnevercode-frontend
-    ports:
-      - 3000:3000
     volumes:
       - /usr/src/app/node_modules
       - ./frontend:/usr/src/app
     stdin_open: true
     mem_limit: 128m
 
+  nginx:
+    restart: always
+    image: hwibaski/docker-nginx
+    ports:
+      - '80:80'
+    mem_limit: 128m
+    links:
+      - frontend
+      - backend
+
   backend:
     image: hwibaski/thisisnevercode-backend
     volumes:
       - /usr/src/app/node_modules
       - ./backend:/usr/src/app
-    ports:
-      - 8000:8000
     environment:
       - PORT=${PORT}
       - JWT_SECRET=${JWT_SECRET}

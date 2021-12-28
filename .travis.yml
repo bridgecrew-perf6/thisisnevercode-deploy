@@ -8,11 +8,13 @@ services:
 after_success:
   - docker build -t hwibaski/thisisnevercode-frontend ./frontend
   - docker build -t hwibaski/thisisnevercode-backend ./backend
+  - docker build -t hwibaski/thisisnevercode-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   - docker push hwibaski/thisisnevercode-frontend
   - docker push hwibaski/thisisnevercode-backend
+  - docker push hwibaski/thisisnevercode-nginx
 
 deploy:
   provider: elasticbeanstalk
