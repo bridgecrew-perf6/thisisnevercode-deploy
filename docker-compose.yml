@@ -2,32 +2,18 @@ version: '3'
 services:
   frontend:
     image: hwibaski/thisisnevercode-frontend
-    volumes:
-      - /usr/src/app/node_modules
-      - ./frontend:/usr/src/app
-    stdin_open: true
-    mem_limit: 128m
-
-  nginx:
-    restart: always
-    image: hwibaski/docker-nginx
     ports:
-      - '80:80'
-    mem_limit: 128m
-    links:
-      - frontend
-      - backend
+      - '3000:3000'
+    stdin_open: true
 
   backend:
     image: hwibaski/thisisnevercode-backend
-    volumes:
-      - /usr/src/app/node_modules
-      - ./backend:/usr/src/app
+    ports:
+      - '8000:8000'
     environment:
-      - PORT=${PORT}
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_TTL=${JWT_TTL}
-      - SALT=${SALT}
-      - ACCESS_TOKEN_SECRET_KEY=${ACCESS_TOKEN_SECRET_KEY}
-      - DATABASE_URL=${DATABASE_URL}
-    mem_limit: 128m
+      - PORT=8000
+      - JWT_SECRET=super secret key
+      - JWT_TTL=super salt
+      - SALT=super salt
+      - ACCESS_TOKEN_SECRET_KEY=b8f3824686de0192a583641a6416d9975941129bc028bdf4665014795f91c26b92835dcc81b7d855fd4d161146ea33a65e69559238acabb99a29b4d93c1c442
+      - DATABASE_URL=mysql://root:Gnlqktmzl12@hwibaski-mysql.csckotwfrcog.ap-northeast-2.rds.amazonaws.com:3306/thisisnevercode

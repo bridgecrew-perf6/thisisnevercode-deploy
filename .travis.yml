@@ -8,23 +8,8 @@ services:
 after_success:
   - docker build -t hwibaski/thisisnevercode-frontend ./frontend
   - docker build -t hwibaski/thisisnevercode-backend ./backend
-  - docker build -t hwibaski/thisisnevercode-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   - docker push hwibaski/thisisnevercode-frontend
   - docker push hwibaski/thisisnevercode-backend
-  - docker push hwibaski/thisisnevercode-nginx
-
-deploy:
-  provider: elasticbeanstalk
-  region: 'ap-northeast-2'
-  app: 'docker-thisisnevercode-app'
-  env: 'Dockerthisisnevercodeapp-env'
-  bucket_name: elasticbeanstalk-ap-northeast-2-083749336129
-  bucket_path: 'docker-thisisnevercode-app'
-  on:
-    branch: main
-
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
