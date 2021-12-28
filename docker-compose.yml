@@ -1,14 +1,13 @@
 version: '3'
 services:
   frontend:
-    build:
-      context: ./frontend
-    ports:
-      - 3000:3000
-    volumes:
-      - /usr/src/app/node_modules
-      - ./frontend:/usr/src/app
-    stdin_open: true
+    image:
+      ports:
+        - 3000:3000
+      volumes:
+        - /usr/src/app/node_modules
+        - ./frontend:/usr/src/app
+      stdin_open: true
 
   backend:
     build:
